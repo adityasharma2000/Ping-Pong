@@ -1,7 +1,6 @@
 --[[
     Fires only once
 ]]
-push = require 'push'
 
 WINDOW_WIDTH = 512
 WINDOW_HEIGHT = 512
