@@ -5,6 +5,7 @@
 WINDOW_WIDTH = 512
 WINDOW_HEIGHT = 512
 dt = 0.01
+base_speed = 100
 
 function love.load()
     math.randomseed(os.time())
@@ -18,9 +19,9 @@ function love.load()
     bally = WINDOW_HEIGHT/2 -2
 
     if math.random(2)==1 then
-        ballvx = 100;
+        ballvx = base_speed
     else
-        ballvx = -100
+        ballvx = -base_speed
     end 
     ballvy = love.math.random( -100, 100)
 
@@ -82,6 +83,27 @@ function love.draw()
             WINDOW_WIDTH,
             'center'
         )
+        love.graphics.printf(
+            'CONTROLS',  --Text
+            0, --Starting x
+            WINDOW_HEIGHT/2+90,
+            WINDOW_WIDTH,
+            'center'
+        )
+        love.graphics.printf(
+            'Player 1 - A S D W',  --Text
+            0, --Starting x
+            WINDOW_HEIGHT/2+110,
+            WINDOW_WIDTH,
+            'center'
+        )
+        love.graphics.printf(
+            'Player 1 - Left, Down, Right, Up Arrow Keys',  --Text
+            0, --Starting x
+            WINDOW_HEIGHT/2+130,
+            WINDOW_WIDTH,
+            'center'
+        )
     end
 end
 
@@ -102,9 +124,9 @@ function love.keypressed(key)
             bally = WINDOW_HEIGHT/2 -2
 
             if math.random(2)==1 then
-                ballvx = 100;
+                ballvx = base_speed
             else
-                ballvx = -100
+                ballvx = -base_speed
             end 
             ballvy = love.math.random( -100, 100)
         
@@ -126,9 +148,9 @@ function love.keypressed(key)
         bally = WINDOW_HEIGHT/2 -2
 
         if math.random(2)==1 then
-            ballvx = 100;
+            ballvx = base_speed
         else
-            ballvx = -100
+            ballvx = -base_speed
         end 
         ballvy = love.math.random( -100, 100)
     
@@ -162,11 +184,11 @@ function love.update(dt)
         end
     
         if ballx <= 15 and ballx >= 10 and bally+2 <= player1Y+20 and bally >= player1Y then
-            ballvx = -ballvx
+            ballvx = base_speed
         end
     
         if ballx >= WINDOW_WIDTH - 15 and ballx <= WINDOW_WIDTH - 10 and bally+2 <= player2Y+20 and bally >= player2Y then
-            ballvx = -ballvx
+            ballvx = -base_speed
         end
 
         ballx = ballx + dt*ballvx
@@ -199,9 +221,9 @@ function love.update(dt)
             bally = WINDOW_HEIGHT/2 -2
 
             if math.random(2)==1 then
-                ballvx = 100;
+                ballvx = base_speed
             else
-                ballvx = -100
+                ballvx = -base_speed
             end 
             ballvy = love.math.random( -100, 100)
         
